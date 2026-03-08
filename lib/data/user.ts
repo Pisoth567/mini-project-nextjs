@@ -1,19 +1,15 @@
-
-type CreateUserInput = {
-  name: string;
-  email: string;
-  password: string;
-};
+import {UserResponse } from "../type/user";
 
 // insert Product to API
-export  function insertUser(user: CreateUserInput){
-    const data =  fetch("https://api.escuelajs.co/api/v1/users/",{
+export async function insertUser(user: UserResponse){
+    const data = await fetch("https://api.escuelajs.co/api/v1/users/",{
         method: "POST",
         headers: {
             "Content-Type": "application/json" 
         },
         body: JSON.stringify(user)
-    }
-    )
-    return data;
+    })
+    const res = await data.json()
+    return res;
 }
+

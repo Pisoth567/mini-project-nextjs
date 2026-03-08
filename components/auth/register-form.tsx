@@ -31,22 +31,23 @@ export default function RegisterForm() {
   });
 
   async function onSubmit(values: FormData) {
-    const createUser = {
-      username: values.username,
-      user_email: values.user_email,
-      user_password: values.user_password,
-    };
+  const createUser = {
+    name: values.username,
+    email: values.user_email,
+    password: values.user_password,
+    avatar: "https://i.pravatar.cc/150"
+  };
 
-    // try {
-    //   const data = await insertUser(createUser);
-    //   console.log("Inserted user:", data);
-    //   form.reset();
-    //   toast.success("Successfully registered!");
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Failed to register!");
-    // }
+  try {
+    const data = await insertUser(createUser);
+    console.log("Inserted user:", data);
+    form.reset();
+    toast.success("Successfully registered!");
+  } catch (error) {
+    console.error(error);
+    toast.error("Failed to register!");
   }
+}
 
   return (
     <form

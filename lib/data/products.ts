@@ -39,4 +39,3 @@ export async function insertProduct(product: Product){
     const res = await data.json()
     return res;
 }
-    

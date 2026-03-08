@@ -18,3 +18,11 @@ export type Category ={
     creationAt: string
     updatedAt: string
 }
+
+export type ProductRequest = {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[]
+}

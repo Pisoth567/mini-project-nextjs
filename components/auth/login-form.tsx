@@ -11,25 +11,48 @@ import { useForm, Controller } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { checkUserEmail} from "@/lib/data/users";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
   const formSchema = z.object({
-    user_email: z.string().email({ message: 'Please enter a valid email address' }),
-    user_password: z.string().min(8, "Password at least 8 characters."),
+    email: z.string().email({ message: 'Please enter a valid email address' }),
+    password: z.string().min(8, "Password at least 8 characters."),
     "submit-button": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      user_email: "",
-      user_password: "",
+      email: "",
+      password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+ async function onSubmit(values: z.infer<typeof formSchema>) {
+  const user = await checkUserEmail(values.email);
+
+  if (!user) {
+    toast.error("User not found");
+    return;
   }
+
+  if (user.password !== values.password) {
+    toast.error("Incorrect password");
+    return ;
+  }
+
+  toast.success("Login success");
+
+  localStorage.setItem("user", JSON.stringify(user));
+  if (user.role === "admin") {
+    router.push("/dashboard");
+  } else {
+    router.push("/");
+  }
+}
 
   function onReset() {
     form.reset();
@@ -51,7 +74,7 @@ export default function LoginForm() {
 
         <Controller
           control={form.control}
-          name="user_email"
+          name="email"
           render={({ field, fieldState }) => (
             <Field
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
@@ -73,7 +96,7 @@ export default function LoginForm() {
         />
         <Controller
           control={form.control}
-          name="user_password"
+          name="password"
           render={({ field, fieldState }) => (
             <Field
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"

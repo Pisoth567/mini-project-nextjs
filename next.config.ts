@@ -102,6 +102,11 @@ const nextConfig = {
         hostname: "api.dicebear.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "share.google",
+        pathname: "/**",
+      },
     ],
   },
 };

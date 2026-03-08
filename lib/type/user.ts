@@ -8,3 +8,10 @@ export type User ={
     creationAt: string
     updatedAt: string
 }
+
+export type UserResponse = {
+  name: string
+  email: string
+  password: string
+  avatar: string
+}
