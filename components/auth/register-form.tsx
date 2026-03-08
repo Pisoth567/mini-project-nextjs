@@ -37,15 +37,15 @@ export default function RegisterForm() {
       user_password: values.user_password,
     };
 
-    try {
-      const data = await insertUser(createUser);
-      console.log("Inserted user:", data);
-      form.reset();
-      toast.success("Successfully registered!");
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to register!");
-    }
+    // try {
+    //   const data = await insertUser(createUser);
+    //   console.log("Inserted user:", data);
+    //   form.reset();
+    //   toast.success("Successfully registered!");
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error("Failed to register!");
+    // }
   }
 
   return (
