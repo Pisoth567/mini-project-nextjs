@@ -72,6 +72,36 @@ const nextConfig = {
         hostname: "api.lorem.space",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "png.pngtree.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "avatar.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imgur.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "elcomercio.pe",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.dicebear.com",
+        pathname: "/**",
+      },
     ],
   },
 };

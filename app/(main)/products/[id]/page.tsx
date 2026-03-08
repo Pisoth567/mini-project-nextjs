@@ -2,6 +2,7 @@ import { fetchAllProducts } from "@/lib/data/products";
 import { Star } from "lucide-react";
 import { Product } from "@/lib/type/product";
 import { ProductGallery } from "./image-gallery";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -55,9 +56,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
 
         <p className="text-2xl font-bold text-yellow-600">${product.price}</p>
 
-        <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
-          Add to Cart
-        </button>
+        <AddToCartButton product={product} />
 
         <p className="text-sm text-gray-400">
           Created at: {new Date(product.creationAt).toLocaleDateString()}

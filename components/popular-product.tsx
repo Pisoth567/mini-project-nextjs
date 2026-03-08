@@ -40,7 +40,9 @@ export default function PopularProduct({ products }: Props) {
                   <p className="text-sm text-shadow-olive-400">{product.description.slice(0,20)}</p>
                   <div className="flex justify-between items-center mt-3">
                     <p className="text-yellow-600 font-bold">${product.price}</p>
-                    <Link className="px-3 py-1 bg-green-400 hover:bg-green-500 rounded-xl text-taupe-100 hover:scale-105" href={`/products/${product.id}`}>Add</Link>
+                    <button>
+                      <Link className="px-3 py-1 bg-green-400 hover:bg-green-500 rounded-xl text-taupe-100 hover:scale-105" href={`/products/${product.id}`}>View</Link>
+                    </button>
                   </div>
                 </CardContent>
               </Card>
