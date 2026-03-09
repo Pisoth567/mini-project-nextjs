@@ -1,6 +1,6 @@
 "use client"
 
-import { IconCirclePlusFilled, IconEye, IconPencil, IconTrash, IconFilePlus, type Icon } from "@tabler/icons-react"
+import { IconCirclePlusFilled, IconEye, IconPencil, IconTrash, IconFilePlus } from "@tabler/icons-react"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -11,13 +11,9 @@ import {
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-
-
 export function NavMain() {
+  const pathname = usePathname()
 
-
-  const pathname = usePathname();
-  
   const items = [
     {
       title: "Create",
@@ -39,49 +35,50 @@ export function NavMain() {
       url: "/dashboard/view",
       icon: IconEye,
     },
-  ];
+  ]
 
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
+        
+        {/* Quick Create */}
         <SidebarMenu>
-          <SidebarMenuItem className="flex items-center gap-2">
+          <SidebarMenuItem>
             <SidebarMenuButton
               tooltip="Quick Create"
-              className="min-w-8 bg-primary text-primary-foreground duration-200 ease-linear hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground"
+              className="min-w-8 bg-primary text-primary-foreground hover:bg-primary/90"
               asChild
             >
-              <Link href="/dashboard?tab=create" className="flex items-center gap-2">
+              <Link href="/dashboard/create" className="flex items-center gap-2">
                 <IconCirclePlusFilled />
                 <span>Quick Create</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        
+
+        {/* Navigation */}
         <SidebarMenu>
           {items.map((item) => {
-            const isActive = pathname.includes(item.title.toLowerCase()) || 
-                            (typeof window !== 'undefined' && 
-                             new URLSearchParams(window.location.search).get('tab') === item.title.toLowerCase());
-            
+            const isActive = pathname === item.url
+
             return (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton 
-                  tooltip={item.title} 
+                <SidebarMenuButton
+                  tooltip={item.title}
                   asChild
                   isActive={isActive}
-                  className={isActive ? "bg-primary/10 text-primary" : ""}
                 >
                   <Link href={item.url} className="flex items-center gap-2">
-                    {item.icon && <item.icon />}
+                    <item.icon />
                     <span>{item.title}</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            );
+            )
           })}
         </SidebarMenu>
+
       </SidebarGroupContent>
     </SidebarGroup>
   )

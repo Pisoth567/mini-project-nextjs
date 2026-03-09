@@ -198,7 +198,6 @@ export default function CreateProductForm({
           )}
         />
 
-        {/* Image */}
         <Controller
           control={form.control}
           name="image"
@@ -223,7 +222,6 @@ export default function CreateProductForm({
           )}
         />
 
-        {/* Submit */}
         <div className="col-span-12">
           <Button type="submit" className="w-full">
             Submit
