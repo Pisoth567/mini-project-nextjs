@@ -107,6 +107,36 @@ const nextConfig = {
         hostname: "share.google",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "img.freepik.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.taky.tv",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "rukminim2.flixcart.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images2.minutemediacdn.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "s3.amazonaws.com",
+        pathname: "/**",
+      },
     ],
   },
 };
